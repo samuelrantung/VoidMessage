@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "49148585791",
+    "project_id": "void-message",
+    "storage_bucket": "void-message.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:49148585791:android:97b1a1eb5dedf7f532d58a",
+        "android_client_info": {
+          "package_name": "com.voidmessage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "49148585791-pokciatjujq3h6dmsmvbkj5usg22tl02.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.voidmessage",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "49148585791-2uv9bfkpqtrj8mvfbcemlrs6q6spv23f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKBKoTFrZM2-CYkRyvwhgWAVPDHgvzOQQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "49148585791-2uv9bfkpqtrj8mvfbcemlrs6q6spv23f.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "49148585791-uim1uo3mi0rr20s67ktjrjklb98k18rm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.VoidMessage"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
