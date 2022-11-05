@@ -1,13 +1,17 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {theme} from '../../../../assets';
 import BackIcon from '../../../../assets/icons/back.svg';
 import TextInter from '../../../../components/atoms/TextInter';
+import {useNavigation} from '@react-navigation/native';
 
 const Header = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <BackIcon />
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <BackIcon />
+      </TouchableOpacity>
       <View style={styles.profileContainer}>
         <View style={styles.pictureContainer}>
           <View style={styles.onlineIndicator} />
