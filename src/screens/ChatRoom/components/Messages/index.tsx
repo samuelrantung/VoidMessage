@@ -1,14 +1,27 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {theme} from '../../../../assets';
 import IncomingMessage from './IncomingMessage';
 import SentMessage from './SentMessage';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../../../redux';
 
-const Messages = () => {
+const Messages = ({messages}) => {
+  const userName = useSelector((state: RootState) => state.UserReducer.name);
   return (
     <View style={styles.container}>
-      <IncomingMessage />
-      <SentMessage />
+      {messages.map(message =>
+        message.user === userName ? (
+          <SentMessage message={message} key={message.id} />
+        ) : (
+          <IncomingMessage message={message} key={message.id} />
+        ),
+      )}
+      {/* {messages.map(message => (
+        <IncomingMessage message={message} key={message.id} />
+      ))} */}
+      {/* <IncomingMessage />
+      <SentMessage /> */}
     </View>
   );
 };

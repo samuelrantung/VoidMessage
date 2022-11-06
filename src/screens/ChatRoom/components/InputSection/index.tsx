@@ -1,20 +1,62 @@
-import {StyleSheet, Text, TextInput, View} from 'react-native';
-import React from 'react';
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import React, {useEffect, useState} from 'react';
 import {Gap, TextInter} from '../../../../components';
 import {PaperPlaneIcon, SmileyStickerIcon, theme} from '../../../../assets';
+import socket from '../../../../utils/socket';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../../../redux';
 
-const InputSection = () => {
+const InputSection = ({roomId}) => {
+  const userName = useSelector((state: RootState) => state.UserReducer.name);
+  const hour =
+    new Date().getHours() < 10
+      ? `0${new Date().getHours()}`
+      : `${new Date().getHours()}`;
+
+  const mins =
+    new Date().getMinutes() < 10
+      ? `0${new Date().getMinutes()}`
+      : `${new Date().getMinutes()}`;
+
+  const [message, setMessage] = useState({
+    message: '',
+    room_id: roomId,
+    user: userName,
+    timestamp: {hour, mins},
+  });
+  const sendMessage = () => {
+    socket.emit('newMessage', message);
+  };
+
   return (
     <View style={styles.position}>
       <View style={styles.container}>
         <View style={styles.textInputContainer}>
           <SmileyStickerIcon />
           <Gap width={8} />
-          <TextInput style={styles.textInput} placeholder="Type a message" />
+          <TextInput
+            style={styles.textInput}
+            onChangeText={val =>
+              setMessage({
+                ...message,
+                message: val,
+                room_id: roomId,
+              })
+            }
+            placeholder="Type a message"
+          />
         </View>
         <Gap width={8} />
         <View style={styles.sendButtonContainer}>
-          <PaperPlaneIcon />
+          <TouchableOpacity onPress={() => sendMessage()}>
+            <PaperPlaneIcon />
+          </TouchableOpacity>
         </View>
       </View>
     </View>

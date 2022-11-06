@@ -1,12 +1,15 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {theme} from '../../../../assets';
 import BackIcon from '../../../../assets/icons/back.svg';
 import TextInter from '../../../../components/atoms/TextInter';
 import {useNavigation} from '@react-navigation/native';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../../../redux';
 
-const Header = () => {
+const Header = ({roomId}) => {
   const navigation = useNavigation();
+  const userName = useSelector((state: RootState) => state.UserReducer.name);
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -17,8 +20,8 @@ const Header = () => {
           <View style={styles.onlineIndicator} />
         </View>
         <View style={styles.textContainer}>
-          <TextInter style={styles.name}>Samuel Rantung</TextInter>
-          <TextInter style={styles.status}>Online</TextInter>
+          <TextInter style={styles.name}>{userName}</TextInter>
+          <TextInter style={styles.status}>{roomId}</TextInter>
         </View>
       </View>
     </View>

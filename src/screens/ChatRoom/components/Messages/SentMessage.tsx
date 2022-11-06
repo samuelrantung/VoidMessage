@@ -3,15 +3,12 @@ import React from 'react';
 import {theme} from '../../../../assets';
 import {Gap, TextInter} from '../../../../components';
 
-const SentMessage = () => {
+const SentMessage = ({message}) => {
   return (
     <View style={styles.container}>
-      <TextInter style={styles.message}>
-        Hello there! Hello there! Hello there! Hello there! Hello there! Hello
-        there! Hello there! Hello there! Hello there!
-      </TextInter>
+      <TextInter style={styles.message}>{message?.text}</TextInter>
       <Gap width={10} />
-      <TextInter style={styles.time}>14.12</TextInter>
+      <TextInter style={styles.time}>{message?.time}</TextInter>
     </View>
   );
 };
