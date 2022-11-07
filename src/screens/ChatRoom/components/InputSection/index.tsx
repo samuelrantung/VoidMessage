@@ -1,4 +1,5 @@
 import {
+  Platform,
   StyleSheet,
   Text,
   TextInput,
@@ -31,7 +32,11 @@ const InputSection = ({roomId}) => {
     timestamp: {hour, mins},
   });
   const sendMessage = () => {
-    socket.emit('newMessage', message);
+    socket.emit('new_message', message);
+    setMessage({
+      ...message,
+      message: '',
+    });
   };
 
   return (
@@ -41,6 +46,7 @@ const InputSection = ({roomId}) => {
           <SmileyStickerIcon />
           <Gap width={8} />
           <TextInput
+            value={message.message}
             style={styles.textInput}
             onChangeText={val =>
               setMessage({
@@ -53,11 +59,11 @@ const InputSection = ({roomId}) => {
           />
         </View>
         <Gap width={8} />
-        <View style={styles.sendButtonContainer}>
-          <TouchableOpacity onPress={() => sendMessage()}>
-            <PaperPlaneIcon />
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity
+          style={styles.sendButtonContainer}
+          onPress={() => sendMessage()}>
+          <PaperPlaneIcon />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -68,7 +74,7 @@ export default InputSection;
 const styles = StyleSheet.create({
   position: {
     position: 'absolute',
-    bottom: 8,
+    bottom: Platform.OS === 'android' ? 8 : 32,
     width: '100%',
   },
   container: {

@@ -3,12 +3,12 @@ import type {PayloadAction} from '@reduxjs/toolkit';
 
 export interface UserProps {
   name: string;
-  rooms: any;
+  socketId: string;
 }
 
 const initialState: UserProps = {
-  name: 'all',
-  rooms: null,
+  name: '',
+  socketId: '',
 };
 
 export const userSlice = createSlice({
@@ -22,13 +22,13 @@ export const userSlice = createSlice({
     changeName: (state, action: PayloadAction<string>) => {
       state.name = action.payload;
     },
-    createRoom: (state, action: PayloadAction<string>) => {
-      state.rooms = action.payload;
+    changeSocketId: (state, action: PayloadAction<string>) => {
+      state.socketId = action.payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const {changeName, createRoom} = userSlice.actions;
+export const {changeName, changeSocketId} = userSlice.actions;
 
 export default userSlice.reducer;

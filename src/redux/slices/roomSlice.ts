@@ -23,7 +23,6 @@ export const roomSlice = createSlice({
       state.activeRoom = action.payload;
     },
     changeRoomList: (state, action: PayloadAction<any>) => {
-      console.log('change room list running', action.payload);
       state.roomList = action.payload;
     },
   },

@@ -7,7 +7,7 @@ import {useNavigation} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
 import {RootState} from '../../../../redux';
 
-const Header = ({roomId}) => {
+const Header = ({roomId, clientName}) => {
   const navigation = useNavigation();
   const userName = useSelector((state: RootState) => state.UserReducer.name);
   return (
@@ -20,7 +20,7 @@ const Header = ({roomId}) => {
           <View style={styles.onlineIndicator} />
         </View>
         <View style={styles.textContainer}>
-          <TextInter style={styles.name}>{userName}</TextInter>
+          <TextInter style={styles.name}>{clientName}</TextInter>
           <TextInter style={styles.status}>{roomId}</TextInter>
         </View>
       </View>

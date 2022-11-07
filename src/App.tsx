@@ -10,12 +10,12 @@ import {store} from './redux';
 const App = () => {
   const Stack = createNativeStackNavigator();
 
-  useEffect(() => {
-    auth()
-      .signInAnonymously()
-      .then(res => console.log('signed in anonymously', res))
-      .catch(err => console.log('error anonymously sign in', err));
-  }, []);
+  // useEffect(() => {
+  //   auth()
+  //     .signInAnonymously()
+  //     .then(res => console.log('signed in anonymously', res))
+  //     .catch(err => console.log('error anonymously sign in', err));
+  // }, []);
 
   return (
     <Provider store={store}>
